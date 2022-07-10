@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:free_games_app/models/all_games_model.dart';
 import 'package:free_games_app/models/game_model.dart';
@@ -32,13 +31,22 @@ class GameDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-            MaterialButton(
-              onPressed: () async {
-                if (!await launchUrl(Uri.parse(game.gameUrl))) {
-                  throw 'Could not launch ${game.gameUrl}';
-                }
-              },
-              child: const Text('Game URL'),
+            const SizedBox(height: 10),
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.indigo, width: 1.5),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: MaterialButton(
+                onPressed: () async {
+                  if (!await launchUrl(Uri.parse(game.gameUrl))) {
+                    throw 'Could not launch ${game.gameUrl}';
+                  }
+                },
+                child: const Text('Game URL'),
+              ),
             ),
             FutureBuilder(
               future: FreeGamesProvider().getGame(game.id),

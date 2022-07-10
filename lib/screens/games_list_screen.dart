@@ -62,7 +62,6 @@ class _GamesListScreenState extends State<GamesListScreen> {
                     ? games.length
                     : gameProvider.searchResults.length,
                 itemBuilder: (context, index) {
-                  print(gameProvider.searchResults);
                   return CardListWidget(
                     game: gameProvider.searchResults.isEmpty
                         ? games[index]
